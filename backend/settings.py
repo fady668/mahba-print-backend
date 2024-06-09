@@ -14,6 +14,13 @@ from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 import secrets
+import os
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+
+app = get_wsgi_application()
+
 
 load_dotenv()
 
@@ -151,12 +158,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWS_CREDENTIALS = True
 
 # Security settings
-# SECURE_HSTS_SECONDS = 31536000  # 1 year
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
-# SECURE_SSL_REDIRECT = True
-# SECRET_KEY = secrets.token_urlsafe(50)
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-
-# This settings for any Project
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True
+SECRET_KEY = secrets.token_urlsafe(50)
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
